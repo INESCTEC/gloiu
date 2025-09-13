@@ -1,23 +1,43 @@
 # GLOIU - **G**enerativeAI for **L**oad **O**ptimization **I**nterpretability for **U**ser engagement 
 
-
 Generate a short, persona-styled daily report from an optimized schedule and return **text** (JSON) and **audio** (MP3) using [OpenAI TTS](https://platform.openai.com/docs/guides/text-to-speech).
 
 Supports **15-minute intervals** and **cost analysis**.
 
-# Project Status
+## Project Status
 
 - 🚧 In Progress: Actively being developed; features and structure may change.
 
-## Contents
+## Overview
 
-- `app/main.py` – FastAPI app (single file; includes the data models)
-- `requirements.txt` – Python deps
-- `hems_client.py` – simple CLI client to call the API (optional)
+- [Project details](#project-details)
+- [Installation](#installation)
+- [Run the RESTful API server](#run-the-restful-api-server)
+- [API client / server interactions](#api-client--server-interactions)
+- [Requests JSON payload](#requests-json-payload-15-minute-schedule--costs)
+- [Endpoints](#endpoints)
+- [Quick tests](#quick-tests)
+- [Persona & style](#persona--style)
+- [Configuration](#configuration)
+- [Troubleshooting](#troubleshooting)
+- [Open source licensing info](#open-source-licensing-info)
+- [Contacts](#contacts)
 
-# Technology Stack
 
-#### Technology Stack
+## Project details
+
+### Repository structure
+
+``` bash
+.                             # Current directory
+├── app                       # REST API server module source code
+├── hems_client.py            # CLI client to interact with the RESTful API server (optional)
+├── LICENSE                   # Rights and licensing information
+├── requirements.txt          # Python dependencies
+```
+
+
+### Technology Stack
 
 - **Language:** Python 3.11+ (also tested for 3.12)
 - **External Tools:** 
@@ -26,15 +46,10 @@ Supports **15-minute intervals** and **cost analysis**.
     - You need a valid **OpenAI API key** to run the TTS features.
 
 
-## Dependencies
+### Dependencies
 
-Dependencies are listed in `requirements.txt`.
+Dependencies are listed in the `requirements.txt` file.
 
-To install:
-
-```sh
-pip install -r requirements.txt
-```
 
 ## Installation
 
@@ -232,8 +247,6 @@ OPENAI_TTS_VOICE=alloy
 
 (Defaults shown; other OpenAI TTS voices include `verse`, `aria`, etc.)
 
-
-
 ## Troubleshooting
 
 - **401/403/`api_key` error**: set `OPENAI_API_KEY` in your shell or `.env`, then restart the server.
@@ -242,9 +255,6 @@ OPENAI_TTS_VOICE=alloy
 - **Persona incorrect in first sentence**: the server prepends the correct persona line; if you still see issues, share the JSON you sent.
 - **No costs in text**: ensure you send `cost_analysis` exactly as in the example. The server includes a “Custos do dia” section when totals are present.
 
-### Open source licensing info
-
-See [LICENSE](LICENSE) for details.
 
 ### Contacts
 
